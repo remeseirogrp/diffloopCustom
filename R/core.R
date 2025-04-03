@@ -129,10 +129,10 @@ setGeneric(name = "mergeAnchors", def = function(dlo, mergegap,
 
 .mergeAnchors <- function(dlo, mergegap, selfloops) {
     # Join the anchors
-    newAnchors <- reduce(dlo@anchors, min.gapwidth = mergegap)
+    newAnchors <- reduce(dlo@anchors, min.gapwidth = 1)
     
     # Create mapping from old indices to new indices
-    ov <- findOverlaps(dlo@anchors, newAnchors)
+    ov <- findOverlaps(dlo@anchors, newAnchors, min.gapwidth = maxgap)
     translate <- ov@to
     names(translate) <- ov@from
     
