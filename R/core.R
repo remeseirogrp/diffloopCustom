@@ -132,7 +132,7 @@ setGeneric(name = "mergeAnchors", def = function(dlo, mergegap,
     newAnchors <- reduce(dlo@anchors, min.gapwidth = 1)
     
     # Create mapping from old indices to new indices
-    ov <- findOverlaps(dlo@anchors, newAnchors, min.gapwidth = maxgap)
+    ov <- findOverlaps(dlo@anchors, newAnchors, maxgap=mergegap)
     translate <- ov@to
     names(translate) <- ov@from
     
